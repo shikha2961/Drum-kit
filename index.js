@@ -4,6 +4,7 @@ for (var i = 0; i < n; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
         var buttoninnerHTML = this.innerHTML;
         makesound(buttoninnerHTML);
+        buttonAnimation(buttoninnerHTML);
        
     })
 
@@ -11,7 +12,7 @@ for (var i = 0; i < n; i++) {
 document.addEventListener("keydown" , function(event){
    
    makesound(event.key);
-  
+     buttonAnimation(event.key);
    
 })
 
@@ -52,6 +53,14 @@ function makesound(key){
     }
     
 }
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
+
 
 // document.querySelectorAll(".drum").forEach(item => { item.addEventListener("click" , Event =>  {
 //     alert("yipee");
